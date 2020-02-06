@@ -9,8 +9,17 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="container">
+    <header class="row">
+    <div class="col-8">
     <h1>Student Grade Table</h1>
-    <div class="table-responsive">
+    </div>
+    <div class= "col-4">
+    <h2>Average Grade<span class="badge badge-secondary">90</span></h2>
+    </div>
+    </header>
+    <div class="row row-cols-1">
+      <div class="table-responsive">
         <table class="table">
         <thead>
           <tr>
@@ -23,10 +32,13 @@
 
         </tbody>
         </table>
+      </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
-    <script src="./components/app.js"></script>
-    <script src="./components/grade-table.js"></script>
-    <script src="main.js"></script>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+  <script src="./components/app.js"></script>
+  <script src="./components/grade-table.js"></script>
+  <script src="./components/page-header.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
