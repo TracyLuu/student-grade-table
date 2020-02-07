@@ -7,6 +7,7 @@
     <title>Student Grade Table</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
 </head>
 <body>
   <div class="container">
@@ -15,11 +16,11 @@
     <h1>Student Grade Table</h1>
     </div>
     <div class= "col-4">
-    <h2>Average Grade<span class="badge badge-secondary">90</span></h2>
+    <h2>Average Grade<span class="badge badge-secondary"></span></h2>
     </div>
     </header>
     <div class="row row-cols-1">
-      <div class="table-responsive">
+      <div class="table-responsive col-9">
         <table class="table">
         <thead>
           <tr>
@@ -29,16 +30,36 @@
           </tr>
         </thead>
         <tbody>
-
+        
         </tbody>
         </table>
       </div>
+    <form class="col-3">
+      <div class="input-group mb-3">
+          <i class="input-group-text input-group-prepend fas fa-user d-flex"></i> 
+        <input type="text" name="name" class="form-control name" placeholder="name" aria-label="name" aria-describedby="basic-addon1">
+      </div>
+      
+      <div class="input-group mb-3">
+          <i class="input-group-text input-group-prepend far fa-list-alt d-flex"></i>
+        <input type="text" class="form-control course" placeholder="course" aria-label="course" name="course" aria-describedby="basic-addon1">
+      </div>
+
+      <div class="input-group mb-3">
+          <i class="input-group-text input-group-prepend fas fa-graduation-cap d-flex"></i>
+        <input type="text" class="form-control grade" placeholder="grade" aria-label="grade" name="grade" aria-describedby="basic-addon1">
+      </div>
+      
+      <button class="btn" type="submit">Add</button>
+      <button class="btn" type="reset">Cancel</button>
+    </form>
     </div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
   <script src="./components/app.js"></script>
   <script src="./components/grade-table.js"></script>
   <script src="./components/page-header.js"></script>
+  <script src="./components/grade-form.js"></script>
   <script src="main.js"></script>
 </body>
 </html>
