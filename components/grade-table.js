@@ -18,6 +18,5 @@ class GradeTable {
             row.append(grade);
             tbody.append(row);
         }
-
     }
 }
