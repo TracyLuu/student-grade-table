@@ -8,6 +8,9 @@ class App {
         this.createGrade = this.createGrade.bind(this);
         this.handleGetGradesError = this.handleGetGradesError.bind(this);
         this.handleGetGradesSuccess = this.handleGetGradesSuccess.bind(this);
+        this.deleteGrade = this.deleteGrade.bind(this);
+        this.handleDeleteGradeError = this.handleDeleteGradeError.bind(this);
+        this.handleDeleteGradeSuccess = this.handleDeleteGradeSuccess.bind(this);
     }
     handleGetGradesError(error){
         console.error(error);
@@ -46,12 +49,21 @@ class App {
             success: this.handleCreateGradeSuccess,
             fail: this.handleCreateGradeError
         })
-        // console.log(name, course, grade);
+
     }
     handleCreateGradeError(){
         console.error(error);
     }
     handleCreateGradeSuccess(){
+        this.getGrades;
+    }
+    deleteGrade(id){
+        console.log(id);
+    }
+    handleDeleteGradeError(error){
+        console.error(error);
+    }
+    handleDeleteGradeSuccess(){
         this.getGrades;
     }
 }
