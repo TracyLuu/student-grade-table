@@ -5,6 +5,9 @@ class App {
         this.pageHeader = pageHeader;
         this.gradeTable = gradeTable;
         this.gradeForm = gradeForm;
+        this.createGrade = this.createGrade.bind(this);
+        this.handleGetGradesError = this.handleGetGradesError.bind(this);
+        this.handleGetGradesSuccess = this.handleGetGradesSuccess.bind(this);
     }
     handleGetGradesError(error){
         console.error(error);
@@ -15,7 +18,7 @@ class App {
         for(var i=0; i<grades.length; i++){
             total = total + (grades[i].grade);
         }
-        header.append(total/grades.length);
+         header.append(total/grades.length);
     }
     getGrades(){
         $.ajax({
@@ -28,5 +31,27 @@ class App {
     }
     start(){
         this.getGrades();
+        this.gradeForm.onSubmit(this.createGrade);
+    }
+    createGrade(name, course, grade){
+        $.ajax({
+            method: "POST",
+            url: "http://sgt.lfzprototypes.com/api/grades",
+            data: {
+                "name": name,
+                "course": course,
+                "grade": grade
+            },
+            headers: {'x-access-token': 'SDjPqUss'},
+            success: this.handleCreateGradeSuccess,
+            fail: this.handleCreateGradeError
+        })
+        // console.log(name, course, grade);
+    }
+    handleCreateGradeError(){
+        console.error(error);
+    }
+    handleCreateGradeSuccess(){
+        this.getGrades;
     }
 }
