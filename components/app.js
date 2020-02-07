@@ -9,6 +9,11 @@ class App {
     }
     handleGetGradesSuccess(grades){
         this.gradeTable.updateGrades(grades);
+        var total = 0
+        for(var i=0; i<grades.length; i++){
+            total = total + (grades[i].grade);
+        }
+        header.append(total/grades.length);
     }
     getGrades(){
         $.ajax({
