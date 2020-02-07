@@ -19,6 +19,5 @@ class GradeTable {
             tbody.append(row);
         }
 
-        console.log(grades);
     }
 }
