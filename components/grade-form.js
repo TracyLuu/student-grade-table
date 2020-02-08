@@ -20,7 +20,7 @@ class GradeForm {
         this.createGrade(name, course, grade);
         event.target.reset();
     }
-    
+
 }
 
 

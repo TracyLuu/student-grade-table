@@ -21,7 +21,8 @@ class App {
         for(var i=0; i<grades.length; i++){
             total = total + (grades[i].grade);
         }
-         header.append(total/grades.length);
+        var average = Math.round(total/grades.length)
+        header.append(average);
     }
     getGrades(){
         $.ajax({
@@ -35,6 +36,7 @@ class App {
     start(){
         this.getGrades();
         this.gradeForm.onSubmit(this.createGrade);
+        this.gradeTable.onDeleteClick(this.deleteGrade);
     }
     createGrade(name, course, grade){
         $.ajax({
