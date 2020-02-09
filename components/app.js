@@ -6,25 +6,27 @@ class App {
         this.gradeTable = gradeTable;
         this.gradeForm = gradeForm;
         this.createGrade = this.createGrade.bind(this);
-        this.handleGetGradesError = this.handleGetGradesError.bind(this);
-        this.handleGetGradesSuccess = this.handleGetGradesSuccess.bind(this);
         this.deleteGrade = this.deleteGrade.bind(this);
         this.handleDeleteGradeError = this.handleDeleteGradeError.bind(this);
         this.handleDeleteGradeSuccess = this.handleDeleteGradeSuccess.bind(this);
+        this.handleCreateGradeSuccess = this.handleCreateGradeSuccess.bind(this);
+        this.handleCreateGradeError = this.handleCreateGradeError.bind(this);
     }
     handleGetGradesError(error){
         console.error(error);
     }
     handleGetGradesSuccess(grades){
         this.gradeTable.updateGrades(grades);
-        var total = 0
+        var total = 0;
         for(var i=0; i<grades.length; i++){
             total = total + (grades[i].grade);
         }
-        var average = Math.round(total/grades.length)
-        header.append(average);
+        var total = Math.round(total/grades.length)
+        header.append(total);
     }
     getGrades(){
+        this.gradeTable.tableElement.innerHTML = ""; 
+        this.pageHeader.headerElement.innerHTML = "";
         $.ajax({
             method: "GET",
             url: "http://sgt.lfzprototypes.com/api/grades",
@@ -49,7 +51,7 @@ class App {
             },
             headers: {'x-access-token': 'SDjPqUss'},
             success: this.handleCreateGradeSuccess,
-            fail: this.handleCreateGradeError
+            error: this.handleCreateGradeError
         })
 
     }
@@ -57,15 +59,21 @@ class App {
         console.error(error);
     }
     handleCreateGradeSuccess(){
-        this.getGrades;
+        this.getGrades();
     }
     deleteGrade(id){
-        console.log(id);
+        $.ajax({
+            method: "DELETE",
+            url: "http://sgt.lfzprototypes.com/api/grades/"+id,
+            headers: {'x-access-token': 'SDjPqUss'},
+            success: this.handleDeleteGradeSuccess,
+            error: this.handleDeleteGradeError
+        });
     }
     handleDeleteGradeError(error){
         console.error(error);
     }
     handleDeleteGradeSuccess(){
-        this.getGrades;
+        this.getGrades();
     }
 }

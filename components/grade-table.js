@@ -11,8 +11,7 @@ class GradeTable {
         
         if(grades.length===0){
             var p = document.querySelector("p");
-            p[i].classList.remove("d-none"); 
-            console.log(p);
+            p.classList.remove("d-none"); 
         }
         
     }
@@ -21,7 +20,6 @@ class GradeTable {
     }
 
     renderGradeRow(data, deleteGrade){
-
         var name = document.createElement("td");
         name.textContent = data.name;
         var course = document.createElement("td");
@@ -32,6 +30,7 @@ class GradeTable {
 
         var button = document.createElement("button");
         button.textContent = "Delete";
+        button.className = "btn btn-danger"
         var operations = document.createElement("td");
             
         operations.append(button);
