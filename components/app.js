@@ -18,11 +18,15 @@ class App {
     handleGetGradesSuccess(grades){
         this.gradeTable.updateGrades(grades);
         var total = 0;
-        for(var i=0; i<grades.length; i++){
-            total = total + (grades[i].grade);
+        if(grades.length===0){
+            header.append(0);
+        } else {
+            for(var i=0; i<grades.length; i++){
+                total = total + (grades[i].grade);
+            }
+            var total = Math.round(total/grades.length);
+            header.append(total);
         }
-        var total = Math.round(total/grades.length)
-        header.append(total);
     }
     getGrades(){
         this.gradeTable.tableElement.innerHTML = ""; 

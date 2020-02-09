@@ -4,7 +4,7 @@ class PageHeader {
         this.pageHeader = pageHeader;
     }
     updateAverage(newAverage){
-        // var qheader = this.headerElement.querySelector()
-        // qheader.textContent = ""
+        console.log(newAverage);
+        this.headerElement.querySelector("span").textContent = newAverage;
     }
 }
